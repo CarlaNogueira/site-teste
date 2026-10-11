@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background:
+      radial-gradient(600px 300px at 85% -10%, rgba(217,131,36,.30), transparent 60%),
+      radial-gradient(500px 280px at 5% 110%, rgba(107,45,92,.45), transparent 60%),
+      #1e1a20;
+    color: #fff;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 72px 80px;
+  }
+  .topo { display: flex; align-items: center; gap: 18px; }
+  .mark {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #d98324; color: #22160a;
+    display: grid; place-items: center; font-size: 34px;
+  }
+  .nome { font-size: 30px; font-weight: 700; letter-spacing: -.01em; }
+  .cidades {
+    display: block; font-size: 17px; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase; color: #b9aec2;
+  }
+  h1 { font-size: 68px; line-height: 1.08; letter-spacing: -.022em; max-width: 17ch; }
+  .sub { margin-top: 26px; font-size: 30px; color: #d9d0de; max-width: 26ch; line-height: 1.4; }
+  .rodape { display: flex; align-items: center; gap: 16px; font-size: 26px; font-weight: 650; }
+  .gratis {
+    background: #d98324; color: #22160a;
+    padding: 14px 30px; border-radius: 10px;
+  }
+  .oferta { color: #b9aec2; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="topo">
+    <div class="mark">&#9834;</div>
+    <div>
+      <div class="nome">Escola de Música Harmonia</div>
+      <span class="cidades">Lisboa · Porto · Beja</span>
+    </div>
+  </div>
+
+  <div>
+    <h1>Aulas de guitarra, piano e voz</h1>
+    <p class="sub">Três escolas em Portugal, com aula experimental gratuita de 45 minutos.</p>
+  </div>
+
+  <div class="rodape">
+    <span class="gratis">Aula experimental grátis</span>
+    <span class="oferta">Desde 2009</span>
+  </div>
+</body>
+</html>

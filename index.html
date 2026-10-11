@@ -1,1 +1,620 @@
-<!DOCTYPE html> <html lang="pt"> <head> <meta charset="UTF-8"> <title>Meu Site de Teste</title> </head> <body> <h1>Olá, Mundo! O meu site está a funcionar!</h1> </body> </html>
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escola de Música Harmonia — Aulas de guitarra, piano e voz em Lisboa, Porto e Beja</title>
+<meta name="description" content="Aulas de guitarra, piano e voz em Lisboa, Porto e Beja. Desde 2009 que ensinamos música a iniciantes e avançados. Aula experimental gratuita. Turmas para adultos, jovens e crianças.">
+<link rel="canonical" href="https://exemplo.com/">
+<meta name="theme-color" content="#6b2d5c">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:site_name" content="Escola de Música Harmonia">
+<meta property="og:title" content="Escola de Música Harmonia — Guitarra, piano e voz em Lisboa, Porto e Beja">
+<meta property="og:description" content="Aulas de guitarra, piano e voz em Lisboa, Porto e Beja. Aula experimental gratuita para novos alunos.">
+<meta property="og:url" content="https://exemplo.com/">
+<meta property="og:image" content="https://exemplo.com/assets/img/og-capa.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alunos a tocar guitarra, piano e voz numa sala da Escola de Música Harmonia">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Escola de Música Harmonia — Guitarra, piano e voz">
+<meta name="twitter:description" content="Aulas de guitarra, piano e voz em Lisboa, Porto e Beja. Aula experimental gratuita.">
+<meta name="twitter:image" content="https://exemplo.com/assets/img/og-capa.jpg">
+
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<!-- Dados estruturados: identidade da organização, das três escolas,
+     dos serviços e das perguntas frequentes. @id estáveis para que os
+     motores de IA reconheçam a mesma entidade em todas as páginas. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@id": "https://exemplo.com/#organizacao",
+      "name": "Escola de Música Harmonia",
+      "url": "https://exemplo.com/",
+      "logo": "https://exemplo.com/assets/img/logo.svg",
+      "image": "https://exemplo.com/assets/img/og-capa.jpg",
+      "description": "Escola de música com aulas de guitarra, piano e voz em Lisboa, Porto e Beja. Aulas individuais e de grupo para adultos, jovens e crianças.",
+      "foundingDate": "2009",
+      "email": "geral@harmonia.pt",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "areaServed": [
+        { "@type": "City", "name": "Lisboa" },
+        { "@type": "City", "name": "Porto" },
+        { "@type": "City", "name": "Beja" }
+      ],
+      "knowsLanguage": "pt-PT",
+      "sameAs": [],
+      "subOrganization": [
+        { "@id": "https://exemplo.com/#escola-lisboa" },
+        { "@id": "https://exemplo.com/#escola-porto" },
+        { "@id": "https://exemplo.com/#escola-beja" }
+      ],
+      "hasOfferCatalog": { "@id": "https://exemplo.com/#catalogo" }
+    },
+    {
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@id": "https://exemplo.com/#escola-lisboa",
+      "name": "Escola de Música Harmonia Lisboa",
+      "branchOf": { "@id": "https://exemplo.com/#organizacao" },
+      "url": "https://exemplo.com/contactos.html",
+      "telephone": "+351 21 000 0111",
+      "email": "lisboa@harmonia.pt",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Augusta 120",
+        "addressLocality": "Lisboa",
+        "postalCode": "1100-053",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.7101,
+        "longitude": -9.1392
+      },
+      "areaServed": { "@type": "City", "name": "Lisboa" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "14:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ]
+    },
+    {
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@id": "https://exemplo.com/#escola-porto",
+      "name": "Escola de Música Harmonia Porto",
+      "branchOf": { "@id": "https://exemplo.com/#organizacao" },
+      "url": "https://exemplo.com/contactos.html",
+      "telephone": "+351 22 000 0222",
+      "email": "porto@harmonia.pt",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua de Cedofeita 250",
+        "addressLocality": "Porto",
+        "postalCode": "4050-174",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.1579,
+        "longitude": -8.6291
+      },
+      "areaServed": { "@type": "City", "name": "Porto" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "14:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ]
+    },
+    {
+      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@id": "https://exemplo.com/#escola-beja",
+      "name": "Escola de Música Harmonia Beja",
+      "branchOf": { "@id": "https://exemplo.com/#organizacao" },
+      "url": "https://exemplo.com/contactos.html",
+      "telephone": "+351 26 000 0333",
+      "email": "beja@harmonia.pt",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Comenda Rui Rafael 12",
+        "addressLocality": "Beja",
+        "postalCode": "7800-000",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.0134,
+        "longitude": -7.8634
+      },
+      "areaServed": { "@type": "City", "name": "Beja" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "14:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "13:00"
+        }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://exemplo.com/#catalogo",
+      "name": "Aulas de música — Escola Harmonia",
+      "itemListElement": [
+        {
+          "@type": "Course",
+          "name": "Aulas de guitarra",
+          "description": "Aulas individuais ou de grupo de guitarra acústica e elétrica, do nível iniciante ao avançado.",
+          "provider": { "@id": "https://exemplo.com/#organizacao" },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": ["onsite", "online"],
+            "courseWorkload": "PT50M",
+            "instructor": {
+              "@type": "Person",
+              "name": "Ana Ferreira",
+              "jobTitle": "Professora de guitarra"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "35",
+            "priceCurrency": "EUR",
+            "category": "Aula individual, 50 minutos",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": { "@type": "City", "name": "Lisboa" },
+            "url": "https://exemplo.com/servicos.html"
+          }
+        },
+        {
+          "@type": "Course",
+          "name": "Aulas de piano",
+          "description": "Aulas individuais ou de grupo de piano, com leitura,harmónica e acompanhamento de repertório.",
+          "provider": { "@id": "https://exemplo.com/#organizacao" },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": ["onsite", "online"],
+            "courseWorkload": "PT50M",
+            "instructor": {
+              "@type": "Person",
+              "name": "Miguel Sá",
+              "jobTitle": "Professor de piano"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "35",
+            "priceCurrency": "EUR",
+            "category": "Aula individual, 50 minutos",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": { "@type": "City", "name": "Lisboa" },
+            "url": "https://exemplo.com/servicos.html"
+          }
+        },
+        {
+          "@type": "Course",
+          "name": "Aulas de voz",
+          "description": "Aulas de canto e técnica vocal, com trabalho de respiração, afinação e interpretação.",
+          "provider": { "@id": "https://exemplo.com/#organizacao" },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": ["onsite", "online"],
+            "courseWorkload": "PT50M",
+            "instructor": {
+              "@type": "Person",
+              "name": "Rita Correia",
+              "jobTitle": "Professora de voz"
+            }
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "40",
+            "priceCurrency": "EUR",
+            "category": "Aula individual, 50 minutos",
+            "availability": "https://schema.org/InStock",
+            "eligibleRegion": { "@type": "City", "name": "Lisboa" },
+            "url": "https://exemplo.com/servicos.html"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://exemplo.com/#website",
+      "url": "https://exemplo.com/",
+      "name": "Escola de Música Harmonia",
+      "inLanguage": "pt-PT",
+      "publisher": { "@id": "https://exemplo.com/#organizacao" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://exemplo.com/#faq-inicio",
+      "inLanguage": "pt-PT",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto custa uma aula de guitarra, piano ou voz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma aula individual de 50 minutos custa 35 € em Lisboa e no Porto, e 30 € em Beja. As aulas de voz custam 40 € em Lisboa e no Porto e 35 € em Beja. A aula experimental de 45 minutos é gratuita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A primeira aula é gratuita?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A aula experimental de 45 minutos é gratuita e serve para conhecer o professor, avaliar o teu nível e decidir se queres avançar. Não há compromisso de inscrição."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A partir de que idade se pode começar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Começamos aulas de guitarra e piano a partir dos 6 anos, com metodologia adaptada à criança. Aulas de voz estão disponíveis a partir dos 12 anos. Adultos sem qualquer experiência são bem-vindos em qualquer idade."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Em que cidades têm escola?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Escola de Música Harmonia tem três escolas: em Lisboa (Rua Augusta 120), no Porto (Rua de Cedofeita 250) e em Beja (Rua Comenda Rui Rafael 12). As aulas também podem ser feitas online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível fazer aulas online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Todas as aulas de guitarra, piano e voz podem ser feitas online por videochamada. O modelo é idêntico ao presencial e o preço é o mesmo."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Saltar para o conteúdo principal</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark" aria-hidden="true">♪</span>
+      <span>
+        Harmonia
+        <span class="brand__cities">Lisboa · Porto · Beja</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="nav-toggle__label">Menu</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Navegação principal">
+      <ul class="site-nav__list">
+        <li><a class="site-nav__link" href="index.html" aria-current="page">Início</a></li>
+        <li><a class="site-nav__link" href="sobre.html">Sobre nós</a></li>
+        <li><a class="site-nav__link" href="servicos.html">Serviços</a></li>
+        <li><a class="site-nav__link" href="contactos.html">Contactos</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--accent btn--sm site-header__cta" href="contactos.html">Aula experimental grátis</a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <span class="eyebrow">Desde 2009 · 3 escolas em Portugal</span>
+        <h1 class="hero__title">Aprende guitarra, piano ou voz com professores que tocam todos os dias</h1>
+        <p class="lead hero__lead">A Escola de Música Harmonia dá aulas de guitarra, piano e voz em Lisboa, Porto e Beja. A primeira aula é experimental e gratuita, sem compromisso.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="contactos.html">Marcar aula experimental</a>
+          <a class="btn btn--ghost" href="servicos.html">Ver serviços e preços</a>
+        </div>
+        <p class="hero__note">Crianças a partir dos 6 anos, jovens e adultos. Presencial ou online.</p>
+      </div>
+
+      <div class="hero__card">
+        <h2>A Harmonia em números</h2>
+        <div class="stat-list">
+          <div class="stat">
+            <span class="stat__value">17</span>
+            <span class="stat__label">anos de escola</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">1200</span>
+            <span class="stat__label">alunos formados</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">3</span>
+            <span class="stat__label">escolas</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">4.8</span>
+            <span class="stat__label">nota média dos alunos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVIÇOS ================= -->
+  <section class="section" aria-labelledby="titulo-servicos">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Serviços</span>
+        <h2 id="titulo-servicos">Três instrumentos, um método</h2>
+        <p class="lead">Cada aluno segue um plano construído com o professor na aula experimental. Ninguém segue um método cego, e ninguém fica preso a um nível que não é seu.</p>
+      </div>
+
+      <div class="grid">
+
+        <article class="card card--link">
+          <span class="card__icon" aria-hidden="true">🎸</span>
+          <h3><a href="servicos.html#guitarra">Aulas de guitarra</a></h3>
+          <p>Guitarra clássica, acústica e elétrica. Aprende técnica, leitura e acompanhamento, a tocar repertório que gostas desde a primeira aula.</p>
+          <p class="card__meta">A partir dos 6 anos · 35 € / aula individual</p>
+          <span class="card__link">Ver detalhe →</span>
+        </article>
+
+        <article class="card card--link">
+          <span class="card__icon" aria-hidden="true">🎹</span>
+          <h3><a href="servicos.html#piano">Aulas de piano</a></h3>
+          <p>Do primeiro contacto com as teclas até à leitura a duas mãos e harmonização. Preparação para conservatório incluída para quem precisa.</p>
+          <p class="card__meta">A partir dos 6 anos · 35 € / aula individual</p>
+          <span class="card__link">Ver detalhe →</span>
+        </article>
+
+        <article class="card card--link">
+          <span class="card__icon" aria-hidden="true">🎤</span>
+          <h3><a href="servicos.html#voz">Aulas de voz</a></h3>
+          <p>Técnica vocal, respiração, afinação e interpretação. Preparação para audições, actuações ao vivo e para quem canta por gosto.</p>
+          <p class="card__meta">A partir dos 12 anos · 40 € / aula individual</p>
+          <span class="card__link">Ver detalhe →</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ESCOLAS ================= -->
+  <section class="section section--tint" aria-labelledby="titulo-escolas">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Onde estamos</span>
+        <h2 id="titulo-escolas">Três escolas, o mesmo método</h2>
+        <p class="lead">Cada escola tem os seus professores e salas, mas o método, os preços e o nível de exigência são iguais nas três. Escolhe a que te for mais conveniente.</p>
+      </div>
+
+      <div class="grid">
+
+        <article class="city-card">
+          <h3>Lisboa</h3>
+          <dl class="facts">
+            <div><dt>Morada</dt><dd>Rua Augusta 120, 1100-053 Lisboa</dd></div>
+            <div><dt>Telefone</dt><dd><a href="tel:+351210000111">+351 21 000 0111</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:lisboa@harmonia.pt">lisboa@harmonia.pt</a></dd></div>
+            <div><dt>Horário</dt><dd>Seg–Sex 14h–21h · Sáb 9h–13h</dd></div>
+          </dl>
+          <a class="btn btn--ghost btn--sm" href="contactos.html">Contactar Lisboa</a>
+        </article>
+
+        <article class="city-card">
+          <h3>Porto</h3>
+          <dl class="facts">
+            <div><dt>Morada</dt><dd>Rua de Cedofeita 250, 4050-174 Porto</dd></div>
+            <div><dt>Telefone</dt><dd><a href="tel:+351220000222">+351 22 000 0222</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:porto@harmonia.pt">porto@harmonia.pt</a></dd></div>
+            <div><dt>Horário</dt><dd>Seg–Sex 14h–21h · Sáb 9h–13h</dd></div>
+          </dl>
+          <a class="btn btn--ghost btn--sm" href="contactos.html">Contactar Porto</a>
+        </article>
+
+        <article class="city-card">
+          <h3>Beja</h3>
+          <dl class="facts">
+            <div><dt>Morada</dt><dd>Rua Comenda Rui Rafael 12, 7800-000 Beja</dd></div>
+            <div><dt>Telefone</dt><dd><a href="tel:+351260000333">+351 26 000 0333</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:beja@harmonia.pt">beja@harmonia.pt</a></dd></div>
+            <div><dt>Horário</dt><dd>Seg–Sex 14h–20h · Sáb 9h30–13h</dd></div>
+          </dl>
+          <a class="btn btn--ghost btn--sm" href="contactos.html">Contactar Beja</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTEMUNHOS ================= -->
+  <section class="section" aria-labelledby="titulo-alunos">
+    <div class="container">
+      <div class="section__head">
+        <span class="eyebrow">Alunos</span>
+        <h2 id="titulo-alunos">O que dizem quem já cá tocou</h2>
+      </div>
+
+      <div class="grid grid--2">
+        <figure class="quote">
+          <blockquote>“Cheguei aos 45 anos sem nunca ter tocado uma nota. Um ano depois toco a minha própria música na cozinha e já não paro.”</blockquote>
+          <figcaption><strong>Joana M.</strong>Aluna de piano, Lisboa</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“O professor descobriu que eu não queria ler partituras, queria aprender os acordes que ouço. Mudou o plano todo para mim. Ninguém me havia deixado escolher.”</blockquote>
+          <figcaption><strong>Tiago R.</strong>Aluno de guitarra, Porto</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“A minha filha entrou aos 7 anos para tocar piano e hoje está na orquestra da escola. Nunca foi obrigada, sempre quis continuar.”</blockquote>
+          <figcaption><strong>Carla P.</strong>Mãe de aluna, Beja</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>“Fiz aulas online durante dois anos por causa da distância. A qualidade é a mesma de estar na sala. Só perdi o café depois da aula.”</blockquote>
+          <figcaption><strong>Bruno S.</strong>Aluno de voz, online</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section--surface" aria-labelledby="titulo-faq">
+    <div class="container container--narrow">
+      <div class="section__head">
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2 id="titulo-faq">Dúvidas que nos fazem mais</h2>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Quanto custa uma aula de guitarra, piano ou voz?</summary>
+          <div class="faq__answer">
+            <p>Uma aula individual de 50 minutos custa 35 € em Lisboa e no Porto, e 30 € em Beja.</p>
+            <p>As aulas de voz custam 40 € em Lisboa e no Porto, e 35 € em Beja. As aulas de grupo, para 2 a 4 alunos, custam entre 17 € e 20 € por pessoa, conforme a cidade.</p>
+            <p>A <a href="servicos.html#precos">aula experimental de 45 minutos é gratuita</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>A primeira aula é gratuita?</summary>
+          <div class="faq__answer">
+            <p>Sim, a aula experimental de 45 minutos é gratuita.</p>
+            <p>É a altura de conhecer o professor, avaliar o teu nível e decidir se queres avançar. Não há compromisso de inscrição nem pagamento antecipado.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>A partir de que idade se pode começar?</summary>
+          <div class="faq__answer">
+            <p>As aulas de guitarra e piano começam a partir dos 6 anos, com metodologia adaptada à criança.</p>
+            <p>As aulas de voz estão disponíveis a partir dos 12 anos. Adultos sem qualquer experiência são bem-vindos em qualquer idade — temos mais de metade dos alunos acima dos 30 anos.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Em que cidades têm escola?</summary>
+          <div class="faq__answer">
+            <p>A Escola de Música Harmonia tem três escolas: Lisboa, Porto e Beja.</p>
+            <p>As moradas são Rua Augusta 120 em Lisboa, Rua de Cedofeita 250 no Porto e Rua Comenda Rui Rafael 12 em Beja. Encontras todos os contactos na <a href="contactos.html">página de contactos</a>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>É possível fazer aulas online?</summary>
+          <div class="faq__answer">
+            <p>Sim. Todas as aulas de guitarra, piano e voz podem ser feitas online por videochamada.</p>
+            <p>O modelo é idêntico ao presencial e o preço é o mesmo. Muitos alunos do Alentejo e das ilhas fazem as aulas que não conseguem fazer presencialmente a partir da escola de Beja.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FINAL ================= -->
+  <section class="cta-band">
+    <div class="container stack">
+      <h2>Experimenta uma aula gratuita</h2>
+      <p class="lead">Escolhe a cidade mais conveniente — Lisboa, Porto ou Beja — e marcamos a tua aula experimental de 45 minutos.</p>
+      <div class="cluster">
+        <a class="btn btn--accent" href="contactos.html">Marcar aula experimental</a>
+        <a class="btn btn--ghost" href="tel:+351210000111">Ligar: +351 21 000 0111</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand__mark" aria-hidden="true">♪</span>
+          <span>Harmonia</span>
+        </a>
+        <p>Escola de música com aulas de guitarra, piano e voz. Em Lisboa, Porto e Beja desde 2009.</p>
+      </div>
+
+      <div>
+        <h2>Navegar</h2>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Serviços</h2>
+        <ul>
+          <li><a href="servicos.html#guitarra">Aulas de guitarra</a></li>
+          <li><a href="servicos.html#piano">Aulas de piano</a></li>
+          <li><a href="servicos.html#voz">Aulas de voz</a></li>
+          <li><a href="servicos.html#precos">Preços</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Escolas</h2>
+        <ul>
+          <li><a href="contactos.html#lisboa">Lisboa</a></li>
+          <li><a href="contactos.html#porto">Porto</a></li>
+          <li><a href="contactos.html#beja">Beja</a></li>
+          <li><a href="mailto:geral@harmonia.pt">geral@harmonia.pt</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© 2026 Escola de Música Harmonia. Todos os direitos reservados.</p>
+      <p>Aula experimental gratuita em todas as escolas.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

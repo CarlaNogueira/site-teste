@@ -1,0 +1,126 @@
+# Escola de Música Harmonia
+
+> Escola de música portuguesa com aulas de guitarra, piano e voz.
+> Três escolas: Lisboa, Porto e Beja. Em funcionamento desde 2009.
+> A primeira aula, de 45 minutos, é gratuita e não implica compromisso.
+
+Factual, conciso e próprio para ser citado. Para mais detalhe, ver as páginas
+indicadas em cada secção.
+
+## Como funciona
+
+As aulas são individuais (50 minutos) ou de grupo (60 minutos, 2 a 4 alunos).
+Podem ser presenciais na escola ou online por videochamada, ao mesmo preço.
+Cada aluno segue um plano de estudos construído com o professor na aula
+experimental. Não há mensalidade, taxa de inscrição nem contrato: paga-se
+aula a aula.
+
+## Preços
+
+Valores por aula, em euros. Sem custos de inscrição ou mensalidade.
+
+| Serviço | Lisboa | Porto | Beja |
+| --- | --- | --- | --- |
+| Guitarra, individual 50 min | 35 € | 35 € | 30 € |
+| Piano, individual 50 min | 35 € | 35 € | 30 € |
+| Voz, individual 50 min | 40 € | 40 € | 35 € |
+| Grupo (2-4 alunos), 60 min | 20 € | 20 € | 17 € |
+| Aula experimental, 45 min | Grátis | Grátis | Grátis |
+
+Packs de 5, 10 ou 20 aulas dão desconto de 5 % a 15 %.
+A escola de Beja aplica preços mais baixos por ter custos de operação
+inferiores. O método e o corpo docente são os mesmos nas três escolas.
+
+## Localizações
+
+### Lisboa
+- Morada: Rua Augusta 120, 1100-053 Lisboa
+- Telefone: +351 21 000 0111
+- Email: lisboa@harmonia.pt
+- Horário: segunda a sexta 14h-21h, sábado 9h-13h, fechado ao domingo
+- Metro: Baixa-Chiado, a 3 minutos
+
+### Porto
+- Morada: Rua de Cedofeita 250, 4050-174 Porto
+- Telefone: +351 22 000 0222
+- Email: porto@harmonia.pt
+- Horário: segunda a sexta 14h-21h, sábado 9h-13h, fechado ao domingo
+- Metro: Trindade, a 4 minutos
+
+### Beja
+- Morada: Rua Comenda Rui Rafael 12, 7800-000 Beja
+- Telefone: +351 26 000 0333
+- Email: beja@harmonia.pt
+- Horário: segunda a sexta 14h-20h, sábado 9h30-13h, fechado ao domingo
+- Estacionamento gratuito na rua
+
+## Instrumentos
+
+**Guitarra** — Guitarra clássica, acústica e elétrica. Postura e técnica de
+mão direita, acordes abertos e com barra, leitura de cifras e tablatura,
+rítmica e palmada. A partir dos 6 anos.
+
+**Piano** — Postura e coordenação das mãos, leitura em clave de sol e de fá,
+escalas e arpejos, harmónica funcional e acompanhamento. Preparação para o
+exame de conservatório. A partir dos 6 anos.
+
+**Voz** — Respiração diafragmática, registos vocais adequados ao corpo,
+afinação, dicção em português, inglês e espanhol, e interpretação. A partir
+dos 12 anos.
+
+## Números
+
+- Fundada em 2009, em Lisboa
+- 3 escolas: Lisboa, Porto e Beja
+- 11 professores, todos músicos profissionais em atividade
+- Mais de 1.200 alunos formados
+- Cerca de metade dos alunos tem mais de 30 anos
+- Nota média dos alunos: 4,8 em 5
+
+## Perguntas frequentes
+
+**A primeira aula é gratuita?**
+Sim. A aula experimental de 45 minutos é gratuita, serve para conhecer o
+professor e avaliar o nível, e não cria qualquer compromisso de inscrição.
+
+**Quanto custa uma aula de guitarra, piano ou voz?**
+Uma aula individual de 50 minutos custa 35 € em Lisboa e no Porto e 30 € em
+Beja, para guitarra e piano. As aulas de voz custam 40 € em Lisboa e no Porto
+e 35 € em Beja. As aulas de grupo custam entre 17 € e 20 € por pessoa. Ver a
+tabela de preços acima.
+
+**A partir de que idade se pode começar?**
+Guitarra e piano a partir dos 6 anos, com metodologia adaptada à criança.
+Voz a partir dos 12 anos. Adultos sem experiência são bem-vindos em qualquer
+idade.
+
+**É possível fazer aulas online?**
+Sim. Todas as aulas de guitarra, piano e voz podem ser feitas online por
+videochamada, ao mesmo preço do presencial. Muitos alunos do Alentejo e das
+ilhas usam esta opção a partir da escola de Beja.
+
+**As aulas de grupo são mais baratas?**
+Sim. A aula de grupo de 60 minutos para 2 a 4 alunos custa 20 € por pessoa em
+Lisboa e no Porto e 17 € em Beja, contra 35 € ou 30 € da aula individual.
+
+**Como funcionam os packs?**
+Packs de 5, 10 ou 20 aulas, com desconto de 5 % a 15 %, pagos por transferência
+bancária. Não têm prazo de validade.
+
+**Há mensalidade ou taxa de inscrição?**
+Não. Não há mensalidade, taxa de inscrição, taxa de materiais nem contrato.
+Pagam-se as aulas que derem, nas semanas que derem.
+
+## Páginas
+
+- [Início](https://exemplo.com/): serviços, escolas, testemunhos e FAQ geral
+- [Serviços](https://exemplo.com/servicos.html): guitarra, piano e voz em
+  detalhe, com tabela de preços por cidade
+- [Sobre nós](https://exemplo.com/sobre.html): história, método e equipa de
+  professores
+- [Contactos](https://exemplo.com/contactos.html): moradas, telefones, emails,
+  horários e marcação da aula experimental
+
+## Contacto geral
+
+geral@harmonia.pt

@@ -1,0 +1,107 @@
+# robots.txt — Escola de Música Harmonia
+# https://exemplo.com/
+# Política: permitir crawling de pesquisa e recuperação (para o site ser
+# citado por motores generativos); bloquear crawling para treino de modelos.
+# Última revisão: 2026-10-11
+
+# ==========================================================================
+# SEARCH E RETRIEVAL — PERMITIR
+# Estes agentes alimentam a pesquisa do ChatGPT (OAI-SearchBot), do Claude,
+# do Perplexity e as AI Overviews do Google. Bloquear este grupo é o que
+# impede o site de aparecer nas respostas geradas.
+# ==========================================================================
+
+# OpenAI — índice de pesquisa do ChatGPT
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — fetch a pedido quando um utilizador pede um URL no ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — índice de pesquisa do Claude
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic — fetch a pedido quando um utilizador pede um URL no Claude
+User-agent: Claude-User
+Allow: /
+
+# Perplexity — motor de respostas que cita fontes com ligação
+User-agent: PerplexityBot
+Allow: /
+
+# Google e Bing — pesquisa tradicional e AI Overviews / AI Mode
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Google — restantes produtos de rastreio (mantém o índice de imagens e vídeos)
+User-agent: GoogleOther
+Allow: /
+
+# Applebot é equivalente ao Googlebot no Safari; permitir indexação Apple
+User-agent: Applebot
+Allow: /
+
+# ==========================================================================
+# TREINO DE MODELOS — BLOQUEAR
+# Estes agentes recolhem conteúdo para treinar modelos fundacionais. Não
+# devolvem tráfego nem referência ao site, pelo que não há contrapartida.
+# A política aplica-se a cada agente em separado, conforme a documentação
+# de cada operador.
+# ==========================================================================
+
+# OpenAI — treino dos modelos de IA
+User-agent: GPTBot
+Disallow: /
+
+# Anthropic — treino dos modelos Claude
+User-agent: ClaudeBot
+Disallow: /
+
+# Anthropic — user-agent antigo, ainda observado em campo
+User-agent: anthropic-ai
+Disallow: /
+
+# Google — treino de Gemini e Vertex. Não afeta o Googlebot nem a pesquisa.
+User-agent: Google-Extended
+Disallow: /
+
+# Apple — treino para Apple Intelligence. Não afeta o Applebot nem o Spotlight.
+User-agent: Applebot-Extended
+Disallow: /
+
+# Common Crawl — dataset que alimenta muitos modelos abertos
+User-agent: CCBot
+Disallow: /
+
+# ByteDance — treino de modelos Doubao
+User-agent: Bytespider
+Disallow: /
+
+# ==========================================================================
+# RESTAURANTES E PADRÃO
+# ==========================================================================
+
+# Agentes não identificados, incluindo scrapers e ferramentas internas
+User-agent: *
+Allow: /
+Disallow: /assets/tmp/
+
+Sitemap: https://exemplo.com/sitemap.xml
+
+# --------------------------------------------------------------------------
+# Nota sobre o âmbito desta política
+#
+# O robots.txt é um contrato por honra, não um mecanismo de segurança.
+# Agentes como o Perplexity-User não são obrigados a respeitá-lo, e
+# scrapers sem user-agent declarado ignoram-no por completo.
+#
+# Esta política serve para definir o que se pretende e sinalizar essa
+# intenção. O que protege de facto os conteúdos é:
+#   1. robots.txt acima, para agentes que respeitam o padrão;
+#   2. uma resposta rápida do servidor (rate limiting, WAF), para o resto.
+# --------------------------------------------------------------------------
