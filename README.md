@@ -3,8 +3,8 @@
 Site institucional de uma escola de música com três escolas — Lisboa, Porto e
 Beja — que dá aulas de guitarra, piano e voz.
 
-HTML, CSS e JavaScript puros. Sem dependências, sem passo de build, sem
-servidor de aplicação.
+HTML, CSS e JavaScript puros no site público; PHP apenas nas ferramentas
+locais. Sem dependências, sem passo de build, sem servidor de aplicação.
 
 ## Ver localmente
 
@@ -13,7 +13,7 @@ Precisas de um servidor HTTP simples. **Não abras os ficheiros com
 alguns navegadores bloqueiam-nos nesse esquema.
 
 ```sh
-python3 -m http.server 8000
+php -S localhost:8000
 ```
 
 Depois abre <http://localhost:8000>.
@@ -25,28 +25,117 @@ index.html          Início
 sobre.html          Sobre nós
 servicos.html       Serviços e preços
 contactos.html      Contactos e moradas
+privacidade.html    Política de privacidade (RGPD)
 robots.txt          Política de crawling
 sitemap.xml          Mapa do site
 llms.txt            Resumo para motores de IA
+api/pedidos.php     Recebe o pedido de aula experimental
+admin/              Painel de gestão (exige login)
 assets/css/main.css Folha de estilos (design system + componentes)
+assets/css/admin.css Componentes do painel (tabelas, etiquetas)
 assets/js/main.js   Interface: menu, separadores, formulário
 assets/img/         Favicon e logótipo
-tools/              Verificadores locais
+db/schema.sql       Estrutura das tabelas
+db/seed.sql         Escolas e instrumentos iniciais
+config/             Ligação à base de dados (credenciais fora do Git)
+tools/              Verificadores locais e teste de ligação (PHP)
+```
+
+## O painel
+
+O painel vive em `/admin/` e não tem ligação nenhuma a partir do site
+público — é o comportamento correcto e, por acaso, também evita que o
+`check_site.php` acuse links partidos para rotas geradas em PHP.
+
+```sh
+php -S localhost:8000     # depois: http://localhost:8000/admin/
+```
+
+Cinco páginas: pedidos, alunos, aulas, professores e o resumo do painel.
+
+**O que cada operação aplica no servidor, nunca só no formulário:**
+
+| Operação | Regras |
+|---|---|
+| Converter pedido em aluno | Copia para `alunos` e marca `convertido`, numa transacção — ou as duas coisas acontecem, ou nenhuma |
+| Apagar aluno | As aulas dele vão com ele (`ON DELETE CASCADE`) |
+| Apagar professor com aulas | Recusado (`ON DELETE RESTRICT`); apagar deixaria aulas sem nome |
+| Agendar aula | O professor tem de ser da escola do aluno, dentro do horário da escola, e sem aula sobreposta |
+| Login | Limite de tentativas e mensagem igual para email certo e errado, para não revelar que contas existem |
+
+A sobreposição de aulas não é imposta pela base de dados — depende de uma
+coluna calculada (início mais duração), que uma restrição `UNIQUE` não sabe
+exprimir. É verificada no PHP, o que é suficiente porque o PHP de um servidor
+normal é de processo único.
+
+## Para correr em desenvolvimento
+
+O site já tem PHP, por isso o servidor deixou de ser um servidor de ficheiros
+estáticos e passou a ser o do PHP:
+
+```sh
+php -S localhost:8000
+```
+
+Isto é o servidor embutido do PHP, feito para desenvolvimento. **Não serve para
+produção**: é de processo único e não define limites de tempo nem cabeçalhos
+de segurança. Em produção usa-se Apache ou Nginx com PHP-FPM.
+
+## Base de dados
+
+MySQL. As credenciais vivem em `config/database.local.php`, que está no
+`.gitignore` — o que se versiona é o `.exemplo.php`.
+
+```sh
+cp config/database.local.exemplo.php config/database.local.php
+# edita a senha em config/database.local.php
+
+mysql -u root -e "CREATE DATABASE harmonia CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -e "CREATE USER 'harmonia'@'localhost' IDENTIFIED BY 'a-sua-senha';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON harmonia.* TO 'harmonia'@'localhost'; FLUSH PRIVILEGES;"
+
+mysql -u harmonia -p harmonia < db/schema.sql
+mysql -u harmonia -p harmonia < db/seed.sql
+
+php tools/testar-ligacao.php
+```
+
+Para entrar no painel `/admin/` é preciso um utilizador. O script pede email,
+nome e senha, e guarda apenas o hash:
+
+```sh
+php tools/criar-utilizador.php
+```
+
+A senha é lida sem eco no ecrã e não é guardada em lado nenhum — só o resultado
+de `password_hash()`. Se a perderes, não a recuperas: cria-se outro utilizador
+e apaga-se o primeiro. Este script só é preciso para o primeiro acesso; os
+seguintes criam-se a partir do painel.
+
+`testar-ligacao.php` confirma a ligação, o charset e se as sete tabelas
+existem. Se o MySQL não arrancar depois de reiniciar a máquina:
+
+```sh
+launchctl kickstart -k gui/$(id -u)/local.mysql
 ```
 
 ## Verificações
 
-Ambas correm sem dependências externas:
+Correm sem dependências externas. Precisam de PHP 8.1 ou superior
+(`array_is_list()`, usado para distinguir objetos JSON de listas):
 
 ```sh
-python3 tools/check_text.py   # texto corrompido, palavras coladas
-python3 tools/check_site.py   # JSON-LD, âncoras, robots.txt, coerência NAP
+php tools/check_text.php   # texto corrompido, palavras coladas
+php tools/check_site.php   # JSON-LD, âncoras, robots.txt, coerência NAP
 ```
 
-`check_site.py` é o mais útil depois de editar conteúdo: garante que não há
+`check_site.php` é o mais útil depois de editar conteúdo: garante que não há
 `@id` de JSON-LD duplicado com atributos contraditórios, que todas as âncoras
 existem, que cada agente de treino está bloqueado em `robots.txt` e que
 moradas, telefones e emails são idênticos em todas as páginas.
+
+`check_text.php` cobre o HTML, o CSS, o JavaScript e os ficheiros de `db/` e
+`config/`.
 
 ## Decisões de implementação
 
@@ -55,9 +144,21 @@ menu, separadores de cidade e construção da mensagem de contacto. Nenhuma
 página depende de script para mostrar conteúdo, o que é requisito para
 indexação e para os motores de IA conseguirem extrair o texto.
 
-**O formulário não tem backend.** Constrói uma mensagem e abre o programa de
-email do utilizador, endereçada à escola escolhida. Zero configuração, zero
-custo, nenhum dado pessoal atravessa um servidor.
+**O formulário grava na base de dados, mas o `mailto:` continua de reserva.**
+`api/pedidos.php` valida no servidor e regista o pedido em `pedidos`. Se o PHP
+não estiver a responder, a rede falhar, ou o servidor devolver um erro, o
+JavaScript volta a abrir o programa de email com a mensagem já escrita. É o
+mesmo princípio de ativação progressiva dos separadores: nenhum visitante fica
+sem forma de contactar a escola por causa de uma peça que pode estar em baixo.
+Quem não tiver JavaScript tem o formulário com `action` e `method`, e recebe
+uma página de confirmação em HTML em vez de JSON.
+
+**Um pedido que vira aluno é uma cópia, não uma transformação.** Ao converter
+um pedido em aluno, faz-se `INSERT` em `alunos` e o pedido passa a
+`convertido`. Um pedido é uma intenção; um aluno tem aulas, nível e estado
+próprios, com vida própria depois da matrícula. Reescrever a linha em `pedidos`
+destruía o registo do contacto original e, com ele, a forma de responder ao
+pedido inicial.
 
 **O mapa do Google é uma ligação, não um *embed*.** Um *iframe* carrega
 cookies de terceiros e, num site com público em Portugal, obriga a gestão de
@@ -93,6 +194,14 @@ usados nos `canonical`, no `sitemap.xml` e no `llms.txt` são
    `#organizacao` do `index.html` — está vazio de propósito.
 5. Criar um perfil Google Business Profile para cada uma das três escolas,
    com os dados NAP idênticos aos do site.
+6. Criar a base de dados no alojamento e importar `db/schema.sql` e
+   `db/seed.sql`. Escrever `config/database.local.php` **à mão** no
+   servidor, com a senha do alojamento — nunca copie a senha de local, nem
+   versione esse ficheiro.
+7. Confirmar que o servidor não mostra erros ao visitante. Com
+   `display_errors` ligado, um erro de PHP imprime o caminho dos ficheiros e a
+   linha donde veio — o que entrega a estrutura do projecto a quem o provoke.
+   Em produção: `display_errors = Off` e `log_errors = On`.
 
 ## Notas sobre SEO e GEO
 

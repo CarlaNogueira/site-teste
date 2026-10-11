@@ -1,0 +1,360 @@
+/* ==========================================================================
+   Painel /admin/ — complementa assets/css/main.css
+
+   O painel não tem design próprio: reaproveita o design system do site
+   (mesmas variáveis, mesmo botão, mesma tipografia) e só acrescenta o que
+   o site público não tem — tabelas, etiquetas de estado e o cabeçalho
+   fixo do painel. Por isso este ficheiro é curto.
+   ========================================================================== */
+
+.admin {
+  background: var(--c-bg);
+}
+
+/* ------------------------------------------------------------------ cabeçalho */
+
+.admin-header {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.admin-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+  justify-content: space-between;
+  padding-block: var(--sp-4);
+}
+
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.admin-nav__link {
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-body);
+  text-decoration: none;
+}
+
+.admin-nav__link:hover {
+  background: var(--c-brand-light);
+  color: var(--c-brand);
+}
+
+/* aria-current é posto pelo PHP na página activa; o sublinhado diz onde
+   estamos sem depender da cor, que nem toda a gente distingue. */
+.admin-nav__link[aria-current="page"] {
+  background: var(--c-brand);
+  color: #fff;
+}
+
+.admin-nav__link--sair {
+  color: var(--c-erro);
+}
+
+.admin-main {
+  padding-block: var(--sp-7) var(--sp-8);
+}
+
+.admin-footer {
+  padding-block: var(--sp-5);
+  border-top: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ------------------------------------------------------------------ estrutura */
+
+.admin-title {
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--sp-5);
+}
+
+.admin-seccao {
+  margin-top: var(--sp-7);
+}
+
+.admin-seccao h2,
+.admin-form h2 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--sp-3);
+}
+
+.admin-nota {
+  color: var(--c-muted);
+  font-size: var(--fs-sm);
+  margin-block: var(--sp-3);
+}
+
+/* ------------------------------------------------------------------ mensagens */
+
+.admin-flash {
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-5);
+  border-radius: var(--radius-sm);
+  background: var(--c-ok-bg);
+  color: var(--c-ok);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.admin-flash--erro {
+  background: var(--c-erro-bg);
+  color: var(--c-erro);
+}
+
+/* ------------------------------------------------------------------ contadores */
+
+.admin-stats {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  margin-bottom: var(--sp-6);
+}
+
+.admin-stat {
+  display: block;
+  padding: var(--sp-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md, var(--radius-sm));
+  text-decoration: none;
+  color: inherit;
+}
+
+.admin-stat:hover {
+  border-color: var(--c-brand);
+}
+
+.admin-stat__numero {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c-brand);
+}
+
+.admin-stat__legenda {
+  display: block;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+
+/* ------------------------------------------------------------------ tabelas */
+
+.admin-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.admin-tabela th,
+.admin-tabela td {
+  padding: var(--sp-3);
+  text-align: left;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: top;
+}
+
+.admin-tabela th {
+  background: var(--c-brand-light);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.admin-tabela tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ------------------------------------------------------------------ etiquetas */
+
+.admin-pill {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 650;
+  background: var(--c-border);
+  color: var(--c-body);
+  white-space: nowrap;
+}
+
+.admin-pill--novo,
+.admin-pill--agendada,
+.admin-pill--ativo {
+  background: var(--c-brand-light);
+  color: var(--c-brand);
+}
+
+.admin-pill--contactado,
+.admin-pill--pausado {
+  background: var(--c-ok-bg);
+  color: var(--c-ok);
+}
+
+.admin-pill--convertido,
+.admin-pill--realizada {
+  background: var(--c-border);
+  color: var(--c-muted);
+}
+
+.admin-pill--descartado,
+.admin-pill--cancelada,
+.admin-pill--saiu {
+  background: var(--c-erro-bg);
+  color: var(--c-erro);
+}
+
+/* ------------------------------------------------------------------ pedidos */
+
+.admin-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+
+.admin-filtro {
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  color: var(--c-body);
+  text-decoration: none;
+}
+
+.admin-filtro:hover {
+  background: var(--c-brand-light);
+}
+
+.admin-filtro--activo {
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  color: #fff;
+}
+
+.admin-pedido {
+  padding: var(--sp-5);
+  margin-bottom: var(--sp-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+}
+
+.admin-pedido__cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.admin-pedido__cabecalho h2 {
+  margin: 0;
+  font-size: var(--fs-lg);
+}
+
+.admin-pedido__mensagem {
+  padding: var(--sp-3);
+  margin-block: var(--sp-4);
+  background: var(--c-bg);
+  border-left: 3px solid var(--c-border-strong);
+  font-size: var(--fs-sm);
+}
+
+.admin-dados {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: 0;
+  font-size: var(--fs-sm);
+}
+
+.admin-dados dt {
+  color: var(--c-muted);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-dados dd {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ acções */
+
+.admin-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+}
+
+.admin-acoes-tabela {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.admin-forma-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0;
+}
+
+.admin-forma-inline select {
+  padding: var(--sp-2);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  font-size: var(--fs-sm);
+}
+
+/* ------------------------------------------------------------------ formulários */
+
+.admin-form {
+  padding: var(--sp-5);
+  margin-bottom: var(--sp-7);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+}
+
+.admin-form--narrow {
+  max-width: 26rem;
+}
+
+.admin-form__grelha {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  margin-bottom: var(--sp-4);
+}
+
+.btn--erro {
+  background: var(--c-erro-bg);
+  color: var(--c-erro);
+  border-color: transparent;
+}
+
+.btn--erro:hover {
+  background: var(--c-erro);
+  color: #fff;
+}

@@ -285,11 +285,19 @@
       <div class="section__head">
         <span class="eyebrow">Aula experimental gratuita</span>
         <h2 id="titulo-form">Marca a tua aula</h2>
-        <p class="lead">Preenche o formulário e abrimos o teu programa de email com a mensagem já escrita para a escola que escolheres. Se preferires, liga ou envia WhatsApp direto.</p>
+        <p class="lead">Preenche o formulário e o teu pedido fica registado para a escola que escolheres. Se preferires, liga ou envia WhatsApp direto.</p>
       </div>
 
       <div class="card">
-        <form class="form" id="form-contacto">
+        <form class="form" id="form-contacto" action="api/pedidos.php" method="post">
+          <!-- Campo-armadilha. Escondido dos olhos e do teclado, mas visível
+               para os bots que preenchem tudo o que encontram. Se vier com
+               valor, o servidor responde que foi gravado e não grava nada:
+               dizer o contrário ensinaria o bot a contornar a armadilha. -->
+          <div class="field" aria-hidden="true" hidden>
+            <label for="website">Não preenches este campo</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form__row">
             <div class="field">
               <label for="nome">Nome <span aria-hidden="true">*</span></label>
@@ -345,6 +353,11 @@
             <span class="field__hint">Opcional. Quanto mais disseres, mais útil é a resposta.</span>
           </div>
 
+          <div class="field field--check">
+            <input type="checkbox" id="consentimento" name="consentimento" required>
+            <label for="consentimento">Li a <a href="privacidade.html">política de privacidade</a> e autorizo o tratamento dos meus dados para me responder a este pedido. <span aria-hidden="true">*</span></label>
+          </div>
+
           <p class="form__status" data-form-status role="status" aria-live="polite"></p>
 
           <div class="cluster">
@@ -352,7 +365,7 @@
             <a class="btn btn--ghost" href="mailto:geral@harmonia.pt">Escrever para geral@harmonia.pt</a>
           </div>
 
-          <p class="form__note">Este site não tem servidor de formulários: o pedido é enviado pelo teu próprio programa de email, para o endereço da escola que escolheres. Os teus dados não são transmitidos nem guardados por este site.</p>
+          <p class="form__note">O pedido é registado no servidor da Escola de Música Harmonia e fica guardado até a escola escolhida o responder. Se avançares para matrícula, os dados passam para a gestão de alunos. Podes pedir a eliminação a qualquer momento — vê a <a href="privacidade.html">política de privacidade</a>.</p>
         </form>
       </div>
     </div>
@@ -409,6 +422,9 @@
           <li><a href="#porto">Porto</a></li>
           <li><a href="#beja">Beja</a></li>
           <li><a href="mailto:geral@harmonia.pt">geral@harmonia.pt</a></li>
+        </ul>
+        <ul>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
         </ul>
       </div>
     </div>

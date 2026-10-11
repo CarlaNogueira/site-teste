@@ -91,6 +91,14 @@ User-agent: *
 Allow: /
 Disallow: /assets/tmp/
 
+# Nada disto é conteúdo para indexar. /config/ guarda as credenciais da base
+# de dados; o robots.txt não impede o acesso directo (é um contrato por
+# honra), mas sinaliza a intenção. A protecção real é a configuração do
+# servidor, que tem de recusar executar ou mostrar o código em /config/.
+Disallow: /api/
+Disallow: /admin/
+Disallow: /config/
+
 Sitemap: https://exemplo.com/sitemap.xml
 
 # --------------------------------------------------------------------------

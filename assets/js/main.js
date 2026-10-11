@@ -201,9 +201,14 @@
   }
 
   /* ------------------------------------------------------------------
-     4. Formulário de contacto → cliente de email
-     Sem backend: compomos uma mensagem e abrimos o cliente de email do
-     utilizador já preenchido. Verificação nativa do HTML corre antes.
+     4. Formulário de contacto → servidor
+     Envia o pedido para api/pedidos.php, que o regista na base de dados.
+
+     O `mailto:` continua a existir como recurso alternative: se o PHP não
+     estiver a correr, se o endereço mudar, ou se a rede falhar, abrimos o
+     programa de email com a mensagem já escrita. É o mesmo princípio de
+     ativação progressiva dos separadores: o site nunca deixa de funcionar
+     por depender de uma peça que pode não estar disponível.
      ------------------------------------------------------------------ */
   function initForm() {
     var form = document.getElementById("form-contacto");
@@ -211,20 +216,14 @@
 
     var status = form.querySelector("[data-form-status]");
 
-    form.addEventListener("submit", function (ev) {
-      /* Deixa o navegador mostrar os erros de validação nativos */
-      if (!form.checkValidity()) {
-        ev.preventDefault();
-        form.reportValidity();
-        return;
-      }
+    function estado(texto, erro) {
+      if (!status) return;
+      status.textContent = texto;
+      status.classList.toggle("form__status--erro", Boolean(erro));
+    }
 
-      ev.preventDefault();
-
-      var dados = new FormData(form);
-      var cidade = dados.get("escola");
-      var escola = ESCOLAS[cidade] || { nome: "escola a escolher" };
-
+    /* Recurso alternative: compose a mensagem e abre o cliente de email. */
+    function abrirEmail(dados, escola) {
       var assunto =
         "Aula experimental — " +
         escola.nome +
@@ -243,23 +242,96 @@
         dados.get("mensagem") || "—"
       ].join("\n");
 
-      var href =
+      window.location.href =
         "mailto:" +
         escola.email +
         "?subject=" +
         encodeURIComponent(assunto) +
         "&body=" +
         encodeURIComponent(corpo);
+    }
 
-      if (status) {
-        status.textContent =
-          "Abrimos o seu programa de email com a mensagem preenchida, " +
-          "endereçada a " +
-          escola.email +
-          ". Se nada abrir, escreva diretamente para esse endereço.";
+    form.addEventListener("submit", function (ev) {
+      /* Deixa o navegador mostrar os erros de validação nativos */
+      if (!form.checkValidity()) {
+        ev.preventDefault();
+        form.reportValidity();
+        return;
       }
 
-      window.location.href = href;
+      ev.preventDefault();
+
+      var dados = new FormData(form);
+      var escola = ESCOLAS[dados.get("escola")] || { nome: "escola a escolher" };
+
+      estado("A registar o teu pedido…", false);
+
+      fetch("api/pedidos.php", {
+        method: "POST",
+        body: dados,
+        /* Diz ao servidor que queremos JSON. Sem este cabeçalho o PHP
+           responderia com uma página HTML, porque não distingue um fetch de
+           um envio de formulário sem JavaScript. */
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          return res
+            .json()
+            .catch(function () {
+              /* Resposta que não é JSON significa que o ficheiro .php não
+                 está a ser executado — o servidor está a mostrar o código
+                 ou a devolver uma página de erro. */
+              return null;
+            })
+            .then(function (corpo) {
+              return { status: res.status, corpo: corpo };
+            });
+        })
+        .then(function (r) {
+          if (r.status === 201 && r.corpo && r.corpo.ok) {
+            estado(
+              "Pedido registado. A escola de " +
+                escola.nome +
+                " responde por email para " +
+                escola.email +
+                ".",
+              false
+            );
+            return;
+          }
+
+          /* 422: o servidor leu o pedido e recusou por conteúdo inválido.
+             Abrir o email não resolveria nada — a mesma coisa ia ser
+             recusada a seguir. Mostramos o que está errado e paramos. */
+          if (r.status === 422) {
+            var campos = (r.corpo && r.corpo.campos) || {};
+            var primeiro = Object.keys(campos)[0];
+            estado(
+              (primeiro ? campos[primeiro] : r.corpo.erro) ||
+                "Verifica os campos assinalados.",
+              true
+            );
+            return;
+          }
+
+          /* Qualquer outra resposta é um problema do servidor, não do
+             pedido. O email garante que a intenção do visitante não se
+             perde. */
+          estado(
+            "Não conseguimos registar o pedido, por isso abrimos o teu " +
+              "programa de email com a mensagem preenchida.",
+            true
+          );
+          abrirEmail(dados, escola);
+        })
+        .catch(function () {
+          estado(
+            "Não conseguimos contactar o servidor, por isso abrimos o teu " +
+              "programa de email com a mensagem preenchida.",
+            true
+          );
+          abrirEmail(dados, escola);
+        });
     });
   }
 

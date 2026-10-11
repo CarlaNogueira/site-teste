@@ -26,6 +26,8 @@
   /* Semânticas */
   --c-ok: #1f7a4d;
   --c-ok-bg: #e8f5ee;
+  --c-erro: #a4231d;
+  --c-erro-bg: #fbeceb;
 
   /* Tipografia — escala fluida com clamp (sem media queries para texto) */
   --ff-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -1038,6 +1040,29 @@ tr.is-highlight {
   resize: vertical;
 }
 
+/* Campo de confirmação.
+   A regra genérica acima põe width: 100% em todos os input do .field, o que
+   esticaria a caixa por toda a linha. Aqui a caixa volta ao tamanho natural
+   e o texto fica ao lado. */
+.field--check {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--sp-3);
+}
+
+.field--check input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  min-height: 0;
+  margin: 0.2rem 0 0;
+  accent-color: var(--c-brand);
+}
+
+.field--check > label {
+  font-weight: 400;
+  color: var(--c-body);
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
@@ -1073,6 +1098,13 @@ tr.is-highlight {
 
 .form__status:empty {
   display: none;
+}
+
+/* O mesmo bloco, mas a dizer que algo correu mal. O verde de sucesso
+   passaria a mensagem errada, por isso a cor muda com o modificador. */
+.form__status--erro {
+  background: var(--c-erro-bg);
+  color: var(--c-erro);
 }
 
 @media (min-width: 40rem) {

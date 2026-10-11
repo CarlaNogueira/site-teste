@@ -1,1 +1,8 @@
 .DS_Store
+
+# Credenciais da base de dados. Este ficheiro tem a senha e nunca deve
+# ir para o Git — config/database.local.exemplo.php é o que se versiona.
+/config/database.local.php
+
+# Ficheiros soltos do PHP
+*.log
